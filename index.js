@@ -109,7 +109,6 @@ app.post('/vubook-webhook', async (req, res) => {
 
     console.log("📤 Отправляем данные в Botpress:", bookingInfo);
 
-    /*
     // 🔐 Вычисляем HMAC SHA256 подпись
     const rawBody = JSON.stringify(bookingInfo);
     const signature = crypto
@@ -126,7 +125,7 @@ app.post('/vubook-webhook', async (req, res) => {
     });
 
     res.status(200).send('OK');
-    */
+    
   } catch (error) {
     console.error('❌ Ошибка на сервере:', error.message);
     res.status(500).send('Ошибка сервера');
