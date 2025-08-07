@@ -33,10 +33,12 @@ app.post('/vubook-webhook', async (req, res) => {
 
   try {
     let reservationId;
+    let lCode;
     if (typeof data.push_data === 'string') {
       const parsed = JSON.parse(data.push_data);
       reservationId = parsed.reservation;
-      console.log("📦 Распарсенный push_data:", parsed);
+      lCode = parsed.lCode || '';
+      console.log("📦 Распарсенный push_data:", lCode);
     } else {
       return res.status(400).send("Неверный формат push_data");
     }
@@ -133,5 +135,5 @@ app.post('/vubook-webhook', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`🚀 Webhook-сервер запущен на http://localhost:${port}`);
+  console.log(`🚀 Webhook-сервер запущен`);
 });
